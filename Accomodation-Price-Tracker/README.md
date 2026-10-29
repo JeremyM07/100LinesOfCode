@@ -1,6 +1,6 @@
 # Birmingham Student Accommodation Price Tracker
 
-An automatic, multi-property student accommodation price monitoring system built in Python. It tracks pricing changes across accommodation providers (currently mezzino and Fusion Students) in Birmingham, updates data into an SQLite database, and sends an alert through Discord when prices drop or raise.
+A student accommodation price monitoring system I made in Python. It tracks pricing changes across accommodation providers (currently mezzino Belgrave View and Fusion Students) in Birmingham, adds data into an SQLite database, and sends an alert through Discord when prices drop or raise. This can be extended to more providers because of the modular design of the scripts.
 
 ---
 
@@ -76,7 +76,7 @@ Execute the pipeline orchestration script:
 
 ## Adding a New Accommodation Provider
 
-To add a new provider (e.g., Unite Students or AmberStudent):
+To add a new provider:
 
 1. Inherit from BaseScraper in scrapers.py:
    
@@ -96,7 +96,7 @@ class NewProviderScraper(BaseScraper):
         # [{"id": "unique_id", "name": "Room Name", "price": 190.00}]
         pass
 ```
-3. Register the scraper in main.py:
+2. Register the scraper in main.py:
 ```
 new_scraper = NewProviderScraper(...)
 scrapers = [mezzino, fusion, new_scraper]
